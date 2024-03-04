@@ -65,6 +65,10 @@ $(function () {
             hide: {
               effect: "blind", // Puedes personalizar el efecto de cierre del diálogo
               duration: 500
+            },
+            open: function (event, ui) {
+                // Asegúrate de que el mapa se inicialice después de abrir el modal
+                map.invalidateSize();
             }
         });
         $("#abreMapa").on("click",function(ev){
