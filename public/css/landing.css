@@ -1,0 +1,328 @@
+#civ-main-element > header {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    display: block;
+    height: 587px;
+    position: relative;
+}
+
+#civ-main-element > header > picture {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    display: block;
+    height: 587px;
+    position: relative;
+    overflow: hidden;
+}
+
+#civ-main-element > header > picture > source {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+}
+
+#civ-main-element > header > picture > img {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    border-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    max-width: none;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    min-height: 587px;
+    height: auto;
+    min-width: 101%;
+}
+
+#civ-main-element > header > div.o-head__content {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    margin: 0;
+    position: absolute;
+    top: -20px;
+    padding: 0 5.625rem;
+    width: 100%;
+}
+
+#civ-main-element > header > div.o-head__content > div.__inner {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+#civ-main-element > header > div.o-head__content > div.__inner > p {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    margin: 9.375rem 0 0.25rem;
+    text-rendering: optimizeLegibility;
+    color: #fff;
+    text-shadow: 5px 3px 9px rgba(25, 39, 40, 0.3);
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-weight: 500;
+    padding: 0;
+    font-size: 1.25rem;
+}
+
+#civ-main-element > header > div.o-head__content > div.__inner > p > strong {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    letter-spacing: -0.02em;
+    text-rendering: optimizeLegibility;
+    color: #fff;
+    text-shadow: 5px 3px 9px rgba(25, 39, 40, 0.3);
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    box-sizing: border-box;
+    line-height: inherit;
+    font-weight: 500;
+}
+
+#civ-main-element > header > div.o-head__content > div.__inner > h1 {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    margin: 0 0 30px;
+    font-family: montserrat, arial, helvetica, sans-serif;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+    color: #fff;
+    text-shadow: 5px 3px 9px rgba(25, 39, 40, 0.3);
+    font-weight: 225;
+    padding: 0;
+    line-height: 1.2;
+    margin-top: 7%;
+}
+
+@media (max-width: 768px) {
+    #civ-main-element > header > div.o-head__content > div.__inner > h1 {
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+        margin: 0 0 30px;
+        font-family: montserrat, arial, helvetica, sans-serif;
+        font-style: normal;
+        text-rendering: optimizeLegibility;
+        color: #fff;
+        text-shadow: 5px 3px 9px rgba(25, 39, 40, 0.3);
+        font-weight: 225;
+        padding: 0;
+        line-height: 1.2;
+        margin-top: 7%;
+    }
+    
+}
+
+#home-search-parent {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+}
+
+#home-search-parent > div {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+}
+
+#home-search-parent > div {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    margin: 0.625rem auto 0;
+    padding: 0;
+    max-width: 75rem;
+}
+
+#home-search-parent > div > div.o-home-search__label {
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 0 0 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 225;
+    color: #333;
+    text-transform: uppercase;
+    display: none;
+}
+
+#home-search-parent > div > div.o-home-search__form-container {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    padding: 0;
+    max-width: 100%;
+    margin: 0 auto;
+    width: 37.5rem;
+}
+
+#o-home-search__list__container {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden;
+    position: relative;
+    z-index: 11;
+}
+
+#o-home-search__filtered-list__container {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    margin: 0.9375vw 0 0;
+    padding: 0;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden;
+    display: block;
+}
+
+#civ-main-element > header > div.o-new-advantages_list._absolute_bottom._bottom_40._bottom_20_large {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    font-family: montserrat, arial, sans-serif;
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 1.25rem;
+}
+#home-search-text{
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.15;
+        overflow: visible;
+        outline: none;
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        height: 2.4375rem;
+        padding: .5rem;
+        border-radius: 0;
+        box-shadow: none;
+        font-family: inherit;
+        font-weight: 350;
+        color: #0a0a0a;
+        transition: box-shadow .5s,border-color .25s ease-in-out;
+        appearance: none;
+        margin: 0;
+        background: transparent;
+        border: none;
+        font-size: 1.125rem!important;
+        background-color: white;
+        border-radius: 12px;
+}
+
+.navbar-custom {
+    color: white;
+    background-color: #000080;
+}

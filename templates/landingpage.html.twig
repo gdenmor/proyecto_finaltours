@@ -1,0 +1,216 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=IE">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<!-- Estilos -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui.css')}}">
+		<link rel="stylesheet" href="{{asset('css/jquery-ui.structure.css')}}">
+		<link rel="stylesheet" href="{{asset('css/jquery-ui.theme.css')}}">
+		<link rel="stylesheet" href="{{asset('css/landing.css')}}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+
+		<!-- Scripts -->
+		<script src="{{asset('js/jquery-3.7.1.js')}}"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="{{asset('js/jquery-ui.js')}}"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.js"></script>
+		<script src="{{asset('js/main.js')}}"></script>
+
+		
+		<style>
+        /* Estilos CSS en línea para propósitos de este ejemplo */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .tour {
+            width: 300px;
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .tour:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .tour img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .tour h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .tour p {
+            color: #666;
+        }
+
+        .tour a {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .tour a:hover {
+            background-color: #555;
+        }
+		.pagination {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+
+		.pagination .pagination-wrapper {
+			display: flex;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.pagination .pagination .current{
+			border: 1px solid black;
+			text-decoration:none;
+			padding: 20px;
+			background-color: #dddbdb;
+		}
+
+		.pagination .pagination .page a{
+			text-decoration: none;
+			color: black;
+		}
+
+		.pagination .pagination .page {
+			border: 1px solid black;
+			text-decoration: none;
+			color: black;
+			padding: 20px;
+			background-color: #dddbdb;
+		}
+
+		.pagination .pagination .page:hover {
+			background-color: #c0bebe;
+		}
+
+		.last a,.next a,.first a,.previous a{
+			text-decoration: none;
+			color: black;
+		}
+
+		.last,.next,.first,.previous{
+			padding: 20px;
+		}
+		
+    </style>
+	</head>
+	<body>
+		{% block body %}
+			{% include "header.html.twig" %}
+			<main id="civ-main-element">
+    			<header class="o-head _home _relative">
+        			<picture class="o-head__img__container">
+            			<source media="(max-width: 767px) and (orientation: portrait)" srcset="https://www.civitatis.com/f/images/banners/home-07-m.jpg">
+            			<img src="https://www.civitatis.com/f/images/banners/home-07.jpg" alt="Civitatis">
+        			</picture>
+					<div class="o-head__content">
+						<div class="__inner">
+						<p class="o-head__subtitle">
+							Llena
+							<strong>tu viaje</strong>
+						</p>
+						<h1 class="o-head__title">Visitas guiadas y excursiones en español por todo el mundo</h1>
+					</div>
+
+					<div class="r-home-search" id="home-search-parent">
+						<div class="o-home-search row">
+							<div class="o-home-search__label">buscar</div>
+							<div class="o-home-search__form-container">
+								<div class="o-home-search__form">
+									<form method="get" id="o-home-search__form--ywwhm" action="/es/buscar">
+										<div class="o-search-container d-flex" id="home-search-container">
+											<input type="hidden" name="q" value="">
+											<div class="o-search-container__search-txt d-flex">
+												<input aria-label="buscar" id="home-search-text" autocomplete="off" type="text" placeholder="¿Dónde quiere viajar?" maxlength="50" value="">
+												<input id="fecha" type="text" style="margin-left: 3%;margin-right: 3%; width: 100%;">
+											</div>
+											<input type="submit" class="o-search-container__search-button" id="page-header__search-button" style="background-color: #f70759; border-radius: 12px;" value="BUSCAR">
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="o-home-search__list__container ua-resizeable u-transparent" id="o-home-search__list__container"></div>
+								<div class="o-home-search__filtered-list__container ua-resizeable u-transparent" id="o-home-search__filtered-list__container"></div>
+							</div>
+						</div>
+					</div>
+				</header>
+				<div id="miModal">
+        {% if error %}
+            <p style="color: red;">{{error.messageKey|trans(error.messageData, 'security')}}</p>
+        {% endif %}
+        
+        <form method="post">
+            <div class="d-flex mb-2">
+                <label for="username">Email:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}">
+            </div>
+            <div class="d-flex">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="_password">
+            </div>
+            <input type="hidden" name="_target_path" value="/rol"> 
+
+            <input type="submit" class="btn btn-primary" value="LOGIN">
+        </form>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+			<h2 id="tit" style="text-align: center;"> Tours mejores valorados</h2>
+            {% for tour in pagination %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="tour">
+                        <img src="{{asset('css/imagenes/'~ tour.ruta.foto)}}" alt="Tour" class="img-fluid">
+                        <h2>{{tour.ruta.titulo}}</h2>
+                        <p>{{tour.ruta.descripcion|raw}}</p>
+                        {% if app.user %}
+                            <a href="{{path('app_info_tour',{id_tour: tour.id,id_user:app.user.id})}}" class="btn btn-primary">Ver más</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination mt-4">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</main>
+{% endblock %}
+</body>
+</html>

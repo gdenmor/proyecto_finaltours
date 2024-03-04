@@ -1,0 +1,66 @@
+.dia {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.dia.seleccionado {
+    background-color: blue;
+}
+
+.dia i {
+    display: none;
+}
+
+.dia.seleccionado i {
+    display: inline;
+    color: #155724;
+}
+
+.user-details{
+    text-decoration: none;
+}
+
+.sidebar
+{
+    background-color: #e2e8f0;
+}
+
+.menu-item span, .menu-item i::before, .content-header-title h1, .fa-stack .user-avatar-icon-foreground::before
+{
+    color:#334155;
+}
+.main-content aside
+{
+    background-color: white;
+}
+
+.menu-item-contents{
+    text-decoration:none;
+}
+
+.fa.fa-home:before {
+    content: "\f015";
+}
+
+.logo{
+    text-decoration: none;
+}
+
+i.fa{
+    font-family: Font Awesome\ 6 Free!important;
+}
+
+#main-menu .menu li{
+    list-style: none;
+}
+
+#main-menu .menu li:hover{
+    background-color: #e2e8f0;
+}
+
+.sidebar{
+    background: #f8fafc;
+}

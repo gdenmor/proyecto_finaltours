@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--IE priority -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=IE">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="DuongHailee">
+    <meta name="author" content="DuongHaiLee, Jacky, Hailee">
+    <meta name="keywords" content="portfolio, full-stack developer, metropolia UAS">
+
+    
+    <script src="{{asset('js/jquery-3.7.1.js')}}"></script>
+    <script src="{{asset('js/jquery-ui.js')}}"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery-ui.structure.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery-ui.theme.css')}}">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{asset('css/landing.css')}}">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        ul li {
+            color: red;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% include "header.html.twig" %}
+    <h1 style="text-align: center;margin-top: 3%;">Register</h1>
+
+    <div class="container mt-5">
+        {% if errores %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for error in errores %}
+                        <li>{{ error.message }}</li>
+                        <li> {{ error.getPropertyPath}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body">
+                            <h2 class="card-title text-center mb-4 text-primary">Creación de informe</h2>
+
+                            {% for flash_message in app.session.flashbag.get('Exito') %}
+                                <div class="alert alert-success">{{ flash_message }}</div>
+                            {% endfor %}
+
+                            {{ form_start(vista, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+                            <div class="mb-3">
+                                {{ form_row(vista.email, {'attr': {'class': 'form-control', 'placeholder': 'Observaciones', 'required': 'required'}}) }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form_row(vista.password, {'attr': {'class': 'form-control', 'placeholder': 'Cantidad de dinero', 'required': 'required', 'type': 'number'}}) }}
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa la cantidad de dinero.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form_row(vista.telefono, {'attr': {'class': 'form-control', 'placeholder': 'URL de la imagen', 'required': 'required'}}) }}
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa la URL de la imagen.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form_row(vista.username, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                                <div class="invalid-feedback">
+                                    Por favor, selecciona un Tour.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form_row(vista.apellido1, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                                <div class="invalid-feedback">
+                                    Por favor, selecciona un Tour.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                {{ form_row(vista.apellido2, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                                <div class="invalid-feedback">
+                                    Por favor, selecciona un Tour.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                {{ form_row(vista.foto, {'attr': {'class': 'form-control'}}) }}
+                                <div class="invalid-feedback">
+                                    Por favor, selecciona un Tour.
+                                </div>
+                            </div>
+
+
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                            </div>
+
+                            {{ form_end(vista) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>

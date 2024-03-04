@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello CancelarRutasController!</title>
+		<script src="{{asset('js/jquery-3.7.1.js')}}"></script>
+		<script src="{{asset('js/jquery-ui.js')}}"></script>
+		<script src="{{asset('js/main.js')}}"></script>
+		<link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui.css')}}">
+		<link rel="stylesheet" href="{{asset('css/jquery-ui.structure.css')}}">
+		<link rel="stylesheet" href="{{asset('css/jquery-ui.theme.css')}}">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+		<link rel="stylesheet" href="{{asset('css/cancelarutas.css')}}">
+		<link rel="stylesheet" href="{{asset('css/landing.css')}}">
+		<script src="{{asset('js/valoracion.js')}}"></script>
+		<style>
+			.starrating > input {
+				display: none;
+			} /* Remove radio buttons */
+
+            .starrating{
+                justify-content: flex-end;
+            }
+
+			.starrating > label:before {
+				content: "\f005"; /* Star */
+				margin: 2px;
+				font-size: 3em;
+				font-family: FontAwesome;
+				display: inline-block;
+			}
+
+			.starrating > label {
+				color: #222222; /* Start color when not clicked */
+			}
+
+			.starrating > input:checked ~ label {
+				color: #ffca08;
+			} /* Set yellow color when star checked */
+
+			.starrating > input:hover ~ label {
+				color: #ffca08;
+			} /* Set yellow color when star hover */
+
+			.comentario {
+				width: 100%;
+				height: 100px;
+				padding: 10px;
+				margin-top: 10px;
+				resize: none; /* Permite ajustar solo la altura verticalmente */
+			}
+
+			#boton {
+				margin-top: 10px;
+			}
+
+			.card{
+				margin-top: 3%;
+			}
+
+			#si{
+					margin-top: 2%;
+					display: none;
+				}
+
+			@media (max-width:768px){
+				#si{
+					margin-top: 11%;
+					display: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		{% block body %}
+			{% include "header.html.twig" %}
+			<main>
+				<h1 style="margin-bottom: 3%;">Mis reservas</h1>
+				<div class="card-deck">
+					{% if reservas %}
+						{% for reserva in reservas %}
+							<div class="card">
+								<div class="card-body">
+									<h2 class="card-title">{{reserva.tour.ruta.titulo}}</h1>
+									<p class="card-text">Fecha de Reserva:
+										{{reserva.fecha_reserva|date('d/m/Y')}}
+									</p>
+									<p class="card-text">Número de personas:
+										{{reserva.getNumPersonas}}
+									</p>
+									{% if reserva.estado=="CANCELADO" %}
+										<input type="button" class="btn btn-primary" value="CANCELADO" disabled>
+									{% else %}
+										<a href="{{path('app_cancela_reservas',{id_reserva: reserva.id,id_user: app.user.id})}}"><input type="button" class="btn btn-primary" value="CANCELAR"></a>
+										<a href="{{path('app_edita_reserva',{id_reserva: reserva.id,id_user: app.user.id,id_tour: reserva.tour.id})}}"><input type="button" class="btn btn-primary" value="EDITAR"></a>
+										{% if reserva.tour.fecha|date("Y-m-d") > "now"|date("Y-m-d")  %}
+											<input type="button" class="btn btn-primary" value="VALORACIÓN NO DISPONIBLE" disabled>
+										{% else %}
+											{% if reserva.valoracion %}
+												<input type="button" class="boton btn btn-primary" value="VALORADO" disabled>
+											{% else %}
+												<h4 style="margin-top: 3%;">¡Valora nuestro tour!</h4>
+												<div id="error" style="color: red; display: none; position: absolute;">Debe de valorarlo para poder continuar</div>
+												<div style="margin-top: 4%;" class="valoracion-container" data-reserva-id="{{ reserva.id }}" data-tour-id="{{ reserva.tour.id }}">
+													<div id="si" class="starrating risingstar d-flex flex-row-reverse">
+														<input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="5 star"></label>
+														<input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="4 star"></label>
+														<input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="3 star"></label>
+														<input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="2 star"></label>
+														<input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="1 star"></label>
+													</div>
+													<textarea id="com" class="comentario" placeholder="Informenos sobre su experiencia"></textarea>
+													<br>
+													<input type="button" id="boton" class="btn btn-primary" value="ENVIAR">
+												</div>
+											{% endif %}
+										{% endif %}
+									{% endif %}
+								</div>
+							</div>
+						{% endfor %}
+					{% else %}
+						<p style="color:red;text-align:center;">Todavía no has reservado ningún tour</p>
+					{% endif %}
+				</div>
+			</main>
+		{% endblock %}
+	</body>
+</html>

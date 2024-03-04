@@ -1,0 +1,207 @@
+{% include "@EasyAdmin/page/content.html.twig" %}
+<div
+	id="ruta">
+
+	<!-- jQuery y jQuery UI -->
+	<script src="{{asset('js/jquery-3.7.1.js')}}"></script>
+	<script src="{{asset('js/jquery-ui.js')}}"></script>
+	<link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui.css')}}">
+	<link rel="stylesheet" href="{{asset('css/jquery-ui.structure.css')}}">
+	<link
+	rel="stylesheet" href="{{asset('css/jquery-ui.theme.css')}}">
+
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Leaflet -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+	<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+	<!-- Date Range Picker -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.js"></script>
+
+	<!-- Dropzone -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+	<link
+	rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
+
+	<!-- Rich Text Editor -->
+	<script src="{{asset('js/Rich-Text-Editor-Jquery-RichText/src/jquery.richtext.js')}}"></script>
+	<link
+	rel="stylesheet" type="text/css" href="{{asset('js/Rich-Text-Editor-Jquery-RichText/src/richtext.min.css')}}">
+
+	<!-- Bootstrap Datepicker -->
+	<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" rel="stylesheet"/>
+
+	<!-- Pickadate -->
+	<link rel="stylesheet" href="{{asset('js/pickadate.js-3.6.2/lib/themes/default.css')}}">
+	<link rel="stylesheet" href="{{asset('js/pickadate.js-3.6.2/lib/themes/default.date.css')}}">
+	<script src="{{asset('js/pickadate.js-3.6.2/lib/picker.js')}}"></script>
+	<script src="{{asset('js/pickadate.js-3.6.2/lib/picker.date.js')}}"></script>
+
+	<!-- Ruta.js -->
+	<script src="{{asset('js/ruta.js')}}"></script>
+
+	<!-- Estilos personalizados -->
+	<link rel="stylesheet" href="{{asset('css/estilos.css')}}">
+
+	<link rel="stylesheet" href="{{asset('css/easyadmin.css')}}">
+	<main>
+	<div class="d-flex">
+		<h1 class="col-10">
+			Creacion Rutas y Tours
+		</h1>
+		<div class="mb-3 text-center">
+			<input id="crear" type="submit" class="btn btn-primary" value="CREAR">
+		</div>
+	</div>
+		<div id="padre" class="container mt-3">
+			<ul>
+				<li>
+					<a href="#pestana-1">Ruta</a>
+				</li>
+				<li>
+					<a href="#pestana-2">Aforo, período y foto</a>
+				</li>
+				<li>
+					<a href="#pestana-3">Items</a>
+				</li>
+			</ul>
+			<div id="pestana-1">
+				<div class="col-12">
+					<div class="mb-3" style="margin-right: 5%;">
+						<label style="margin-right: 5%;" class="form-label">Título</label>
+						<span id="errortitulo" style="color: red; display:none;">Debe de existir un título</span>
+						<br>
+						<input type="text" class="form-control" id="titulo">
+					</div>
+
+					<div class="mb-3">
+						<div id="mapa"></div>
+						<label for="puntoEncuentro" class="form-label">Punto de encuentro</label>
+						<span id="errormapa" style="margin-left: 5%;color: red; display:none;">Elija coordenadas</span>
+						<input id="abreMapa" type="button" class="btn btn-primary d-block" value="ABRIR MAPA">
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="descripcion" class="form-label">Descripción</label>
+					<textarea class="form-control" id="descripcion"></textarea>
+				</div>
+			</div>
+			<div id="pestana-2">
+				<div class="mb-3" style="margin-right: 5%;">
+					<label for="aforo" class="form-label">Aforo</label>
+					<span id="erroraforo" style="margin-left: 5%;color: red; display:none;">El aforo debe de ser mayor que 0</span>
+					<br>
+					<input type="number" class="form-control" id="aforo">
+				</div>
+
+				<div class="mb-3" style="margin-right: 5%;">
+					<label for="range" class="form-label">Periodo</label>
+					<span id="errorperiodo" style="color: red; display:none;">Debes de elegir un periodo</span>
+					<br>
+					<input type="text" class="form-control" id="range">
+				</div>
+				<div class="mb-3">
+					<label for="fileupload" class="form-label">Introduce la imagen de la ruta:</label>
+					<input type="file" class="form-control" id="fileupload" name="drop">
+				</div>
+			</div>
+			<div id="pestana-3">
+				
+				<div class="row d-flex justify-content-between">
+					<div class="col-md-6">
+						<span id="erroritems" style="color: red; display:none;">Debes de elegir un periodo</span>
+						<div class="d-flex">
+							<input type="text" id="filtro" class="form-control" placeholder="Introduzca su provincia">
+							<input type="button" class="btn btn-primary" id="buscar" value="BUSCAR">
+						</div>
+						<div class="mb-3">
+							<label class="form-label">Items</label>
+							<div
+								id="itemsContainer" class="border p-3"><!-- Contenido del contenedor de items -->
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="mb-3" id="container">
+							<label class="form-label">Otros</label>
+							<div
+								id="otrosContainer" class="border p-3"><!-- Contenido del contenedor de otros -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="modaltour" style="width: 70%;">
+			<div class="mb-2">
+				<label for="range" class="form-label">Periodo:
+				</label>
+				<input type="text" id="periodo">
+			</div>
+
+			<div class="d-flex">
+				<label for="range" class="form-label" style="margin-top: 2%;">Hora:
+				</label>
+				<input type="time" id="tiempo">
+				<input type="button" value="Añadir" class="btn btn-primary" id="aniade">
+			</div>
+
+			<div class="dia" data-dia="monday">
+				Lunes
+				<i class="fas fa-check"></i>
+			</div>
+			<div class="dia" data-dia="tuesday">
+				Martes
+				<i class="fas fa-check"></i>
+			</div>
+			<div class="dia" data-dia="wednesday">
+				Miércoles
+				<i class="fas fa-check"></i>
+			</div>
+			<div class="dia" data-dia="thursday">
+				Jueves
+				<i class="fas fa-check"></i>
+			</div>
+			<div class="dia" data-dia="friday">
+				Viernes
+				<i class="fas fa-check"></i>
+			</div>
+			<div class="dia" data-dia="saturday">
+				Sábado
+				<i class="fas fa-check"></i>
+			</div>
+			<div class="dia" data-dia="sunday">
+				Domingo
+				<i class="fas fa-check"></i>
+			</div>
+
+			<select id="guias">
+				{% for guia in guias %}
+					<option value="{{guia.id}}">{{guia.username}}</option>
+				{% endfor %}
+			</select>
+
+			<table class="table table-dark mt-3" id="tabla">
+				<thead>
+					<th>Fecha de inicio</th>
+					<th>Fecha de fin</th>
+					<th>Días</th>
+					<th>ID Ruta</th>
+					<th>ID Guía</th>
+					<th>Hora</th>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<input type="button" value="GUARDAR" id="guarda">
+			<input type="button" value="CREAR" disabled id="crea">
+		</div>
+	</main>
+</div>
