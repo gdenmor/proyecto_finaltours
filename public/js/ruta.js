@@ -113,14 +113,48 @@ $(function () {
         hide: {
             effect: "blind", // Puedes personalizar el efecto de cierre del diálogo
             duration: 500
+        },
+        open: function (event, ui) {
+            // Asegúrate de que el mapa se inicialice después de abrir el modal
+            map.invalidateSize();
         }
     });
+        var direccion = $("#puntoEncuentro");
+        var coord = "";
+        var map = L.map('mapa').setView([0, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    
+        // Utilizar el servicio de geocodificación de OpenStreetMap Nominatim
+        var nominatimURL = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(direccion);
+    
+        $.ajax({
+            url: nominatimURL,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                if (data.length > 0) {
+    
+                    var marker = L.marker([0, 0], { draggable: true })
+    
+                    marker.addTo(map)
+                        .openPopup();
+    
+                    marker.on("dragend", function (ev) {
+                        var latitudfin = ev.target._latlng.lat;
+                        var longitudfin = ev.target._latlng.lng;
+                        coord = latitudfin + "," + longitudfin;
+                        $("#mapa").dialog("close");
+                    })
+                } else {
+                    alert("No se encontraron coordenadas para la dirección proporcionada.");
+                }
+            },
+            error: function () {
+                alert("Error al obtener las coordenadas. Por favor, inténtalo de nuevo.");
+            }
+        });
     $("#abreMapa").on("click", function (ev) {
         ev.preventDefault();
-        map.whenReady(function() {
-            // Ahora el mapa está completamente cargado, puedes permitir interacciones como arrastrar
-            map.dragging.enable();
-        });
         
         $("#mapa").dialog("open");
     });
@@ -176,40 +210,6 @@ $(function () {
         hide: {
             effect: "blind", // Puedes personalizar el efecto de cierre del diálogo
             duration: 500
-        }
-    });
-    var direccion = $("#puntoEncuentro");
-    var coord = "";
-    var map = L.map('mapa').setView([0, 0], 2);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-    // Utilizar el servicio de geocodificación de OpenStreetMap Nominatim
-    var nominatimURL = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(direccion);
-
-    $.ajax({
-        url: nominatimURL,
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            if (data.length > 0) {
-
-                var marker = L.marker([0, 0], { draggable: true })
-
-                marker.addTo(map)
-                    .openPopup();
-
-                marker.on("dragend", function (ev) {
-                    var latitudfin = ev.target._latlng.lat;
-                    var longitudfin = ev.target._latlng.lng;
-                    coord = latitudfin + "," + longitudfin;
-                    $("#mapa").dialog("close");
-                })
-            } else {
-                alert("No se encontraron coordenadas para la dirección proporcionada.");
-            }
-        },
-        error: function () {
-            alert("Error al obtener las coordenadas. Por favor, inténtalo de nuevo.");
         }
     });
     var items = [];
